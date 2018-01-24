@@ -18,12 +18,14 @@
           <h2 id="list-groups">List Groups</h2>
           {{#bs/list-group as |g|}}
             {{g.item text="inline text"}}
+            {{g.item text="Disabled Attribute" disabled=true}}
             {{#g.item tagName="div" active=isActive disabled=isDisabled type="danger"}}
               Blocks work too, with custom properties!
             {{/g.item}}
-            {{#g.action onClick=(action "myAction")}}
-              Clickable as a button
+            {{#g.action onClick=(action "alertStuff")}}
+              Clickable as a button with action
             {{/g.action}}
+            {{#g.link "index"}} Link (with appropriate active state) {{/g.link}}
           {{/bs/list-group}}
         </div>
         <div>
@@ -31,8 +33,9 @@
           {{#confirm-button
             modalTitle="Titular Modal"
             buttonText="Click Me"
-            onSubmit=(action "logStuff")
-            onCancel=(action "alertStuff")
+            modalSize="lg"
+            onSubmit=(action "alertStuff")
+            onCancel=(action "logStuff")
           }}
             This is the text that goes into the modal.
 
